@@ -32,10 +32,11 @@
       "pytest-cov",
   ]
 
-  # Update
-  # [project.urls]
-  # Homepage = "https://github.com/<your-username>/fpt-bearings"
-  # Issues   = "https://github.com/<your-username>/fpt-bearings/issues"
+  [project.urls]
+  Homepage   = "https://github.com/ttpioger/fpt-bearings"
+  Repository = "https://github.com/ttpioger/fpt-bearings"
+  Issues     = "https://github.com/ttpioger/fpt-bearings/issues"
+                                                                  
 
   [tool.setuptools.packages.find]
   where = ["src"]
