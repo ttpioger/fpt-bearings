@@ -1,0 +1,20 @@
+# Sampling: XJTU records a vibration snapshot every minute.
+minutes_per_sample = 1.0
+
+# End-of-healthy-stage indices, per bearing. Empirical
+[healthy_points]
+bearing1_1 = 30
+bearing1_2 = 30
+bearing1_3 = 30
+bearing1_4 = 30
+bearing1_5 = 30
+bearing2_1 = 30
+bearing2_2 = 30
+bearing2_3 = 30
+bearing2_4 = 30
+bearing2_5 = 30
+bearing3_1 = 30
+bearing3_2 = 30
+bearing3_3 = 30
+bearing3_4 = 30
+bearing3_5 = 5

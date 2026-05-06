@@ -1,0 +1,44 @@
+  [build-system]
+  requires = ["setuptools>=68", "wheel"]
+  build-backend = "setuptools.build_meta"
+
+  [project]
+  name = "fpt-bearings"
+  version = "0.1.0"
+  description = "First Prediction Time (FPT) detection from bearing vibration data."
+  readme = "README.md"
+  requires-python = ">=3.11"
+  license = { file = "LICENSE" }
+  authors = [{ name = "Thomas Pioger", email = "thomas.pioger@wanadoo.fr" }]
+  keywords = ["bearings", "vibration", "fpt", "prognostics", "rms"]
+  classifiers = [
+      "Development Status :: 3 - Alpha",
+      "Intended Audience :: Science/Research",
+      "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+      "Operating System :: OS Independent",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3 :: Only",
+      "Topic :: Scientific/Engineering",
+  ]
+  dependencies = [
+      "numpy>=1.24",
+      "pandas>=2.0",
+      "scipy>=1.10",
+  ]
+
+  [project.optional-dependencies]
+  dev = [
+      "pytest>=7",
+      "pytest-cov",
+  ]
+
+  # Update
+  # [project.urls]
+  # Homepage = "https://github.com/<your-username>/fpt-bearings"
+  # Issues   = "https://github.com/<your-username>/fpt-bearings/issues"
+
+  [tool.setuptools.packages.find]
+  where = ["src"]
+
+  [tool.setuptools.package-data]
+  fpt_bearings = ["configs/*.toml"]
