@@ -25,6 +25,7 @@ def _load_external_config(path : Path) -> dict:
 class BearingLoader(Protocol):
     """Anything with these three attributes is a valid loader."""
     minutes_per_sample: float
+    sample_freq: float
     healthy_points: dict[str, int]
 
     def load(self, bearing_path: Path) -> pd.DataFrame:
@@ -45,6 +46,7 @@ class _ConfigurableLoader:
             self,
             healthy_points: dict[str, int] | None = None,
             minutes_per_sample: float | None = None,
+            sample_freq = None
     ):
         cfg = _load_packaged_config(self._DEFAULT_CONFIG)
         self.healthy_points = (
@@ -53,6 +55,10 @@ class _ConfigurableLoader:
         self.minutes_per_sample = (
             minutes_per_sample if minutes_per_sample is not None
             else cfg["minutes_per_sample"]
+        )
+        self.sample_freq = (
+            sample_freq if sample_freq is not None
+            else cfg["sample_freq"]
         )
 
     @classmethod
@@ -63,6 +69,7 @@ class _ConfigurableLoader:
         return cls(
             healthy_points=cfg.get("healthy_points"),
             minutes_per_sample=cfg.get("minutes_per_sample"),
+            sample_freq=cfg.get("sample_freq"),
         )
 
 # --------------

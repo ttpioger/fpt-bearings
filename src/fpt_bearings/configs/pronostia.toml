@@ -1,6 +1,6 @@
 # Sampling: PRONOSTIA records a vibration snapshot every 10 seconds.
 minutes_per_sample = 0.16666666666666666  # 10/60
-
+sample_freq = 25600.0
 # End-of-healthy-stage indices, per bearing. Empirical
 [healthy_points]
 bearing1_1 = 100
