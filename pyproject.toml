@@ -9,7 +9,7 @@
   readme = "README.md"
   requires-python = ">=3.11"
   license = { file = "LICENSE" }
-  authors = [{ name = "Thomas Pioger", email = "thomas.pioger@wanadoo.fr" }]
+  authors = [{ name = "Thomas Pioger", email = "t.p.pioger@tudelft.nl" }]
   keywords = ["bearings", "vibration", "fpt", "prognostics", "rms"]
   classifiers = [
       "Development Status :: 3 - Alpha",
