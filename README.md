@@ -48,6 +48,7 @@ pipeline.run(Path("/data/PRONOSTIA/Test_set"))
 ---
 
 ## Pipeline overview
+```
 Raw vibration files
        │
        ▼
@@ -68,3 +69,4 @@ FeatureExtractor   ArtifactStore    ← features + vibration saved as .npy
                       │
                       ▼
                    Reporter         ← TextReporter / custom
+```
