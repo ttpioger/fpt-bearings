@@ -73,6 +73,8 @@ FeatureExtractor   ArtifactStore    ← features + vibration saved as .npy      
 ## Classes
 
 ### Loaders
+
+** Dataset config shipped with package**:
 | Class | Dataset | Config |
 |---|---|---|
 | `PronostiaLoader` | FEMTO / PRONOSTIA | `pronostia.toml` |
@@ -99,3 +101,32 @@ bearing1_2 = 8
 smoother = ExponentialSmoother(alpha=0.3)  # lower alpha = smoother
 smoother = NoSmoother()                    # pass-through (default)
 ```
+
+### Health Indicator
+```
+indicator = RMS()
+```
+
+### Detector
+```python
+detector = ThreeSigmaDetector(k=3.0, consecutive=3)
+fpt_index, found = detector.detect(indicator_series, healthy_point=10)
+```
+
+### Feature Extractor
+```python
+extractor = FeatureExtractor(default_features(sample_freq=25600.0))
+features_df = extractor.extract(list_of_signals)
+```
+
+### Artifact Store
+```python
+store = NpyArtifactStore(Path("output/pronostia"))
+```
+
+### Reporter
+```python
+reporter = TextReporter(Path("output/report.txt"), title="PRONOSTIA")
+```
+
+
