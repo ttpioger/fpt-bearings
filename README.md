@@ -12,11 +12,13 @@ A Python Library for FPT detection in rotating machinery bearings. Provides a mo
 - Storage: Saves features and vibration signals as .npy files for ML workflows. 
 - TOML-based configuration: dataset configs for PRONOSTIA and XJTU ship with the package. Can be overridden with your own file.
 ---
+
 ## Installations
 ``pip install fpt-bearings ``
 ---
+
 ## Quick Start
-``
+```
 from pathlib import Path
 from fpt_bearings.loaders import PronostiaLoader
 from fpt_bearings.indicators import RMS
@@ -40,4 +42,27 @@ pipeline = FPTPipeline(
 )
 
 pipeline.run(Path("/data/PRONOSTIA/Test_set"))
-``
+```
+---
+
+## Pipeline overview
+Raw vibration files
+       │
+       ▼
+   BearingLoader        ← PronostiaLoader / XjtuLoader / custom
+       │
+       ▼
+    Smoother            ← ExponentialSmoother / NoSmoother / custom
+       │
+       ▼
+  HealthIndicator       ← RMS / custom
+       │
+       ▼
+   FPTDetector          ← ThreeSigmaDetector / custom
+       │
+    ┌──┴──────────────┐
+    ▼                 ▼
+FeatureExtractor   ArtifactStore    ← features + vibration saved as .npy
+                      │
+                      ▼
+                   Reporter         ← TextReporter / custom
