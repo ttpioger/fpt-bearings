@@ -14,10 +14,12 @@ A Python Library for FPT detection in rotating machinery bearings. Provides a mo
 ---
 
 ## Installations
-``pip install fpt-bearings ``
+
+```pip install fpt-bearings ```
 ---
 
 ## Quick Start
+
 ```
 from pathlib import Path
 from fpt_bearings.loaders import PronostiaLoader
