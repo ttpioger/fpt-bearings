@@ -47,7 +47,7 @@ pipeline.run(Path("/data/PRONOSTIA/Test_set"))
 ```
 ---
 
-## Pipeline overview
+## FPT overview
 ```
 Raw vibration files
        │
@@ -65,8 +65,37 @@ Raw vibration files
        │
     ┌──┴──────────────┐
     ▼                 ▼
-FeatureExtractor   ArtifactStore    ← features + vibration saved as .npy
-                      │
+FeatureExtractor   ArtifactStore    ← features + vibration saved as .npy                      │
                       ▼
                    Reporter         ← TextReporter / custom
+```
+
+## Classes
+
+### Loaders
+| Class | Dataset | Config |
+|---|---|---|
+| `PronostiaLoader` | FEMTO / PRONOSTIA | `pronostia.toml` |
+| `XjtuLoader` | XJTU-SY | `xjtu.toml` |
+
+Load an external config
+
+```loader = PronostiaLoader.from_config(Path("my_config.toml"))```
+
+Example of config format (TOML): 
+
+
+```
+minutes_per_sample = 10.0
+sample_freq = 25600.0
+
+[healthy_points]
+bearing1_1 = 5
+bearing1_2 = 8
+```
+
+### Smoother
+```
+smoother = ExponentialSmoother(alpha=0.3)  # lower alpha = smoother
+smoother = NoSmoother()                    # pass-through (default)
 ```
